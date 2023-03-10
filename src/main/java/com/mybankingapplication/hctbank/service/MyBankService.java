@@ -59,6 +59,7 @@ public class MyBankService implements IMyBankService {
         customerDetails.setCreated(Timestamp.from(Instant.now()));
         Long Custid=customerDetailsRepository.save(customerDetails).getCustomerId();
         Long accountId=updateAccountBalance(null);
+        //creating a new pull req
 
         boolean mapResult=CustIdToAccIdMap(new CustToAccMap(accountId,Custid));
         return mapResult?new CreatCustDetaResopse(Custid):null;
