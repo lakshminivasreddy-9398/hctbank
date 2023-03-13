@@ -19,7 +19,8 @@ public class CustomerAddress {
     private String city;
     @Column(name = "address_lane")
     private String addressLane;
-    @Column(name = "pin") private Long pin;
+    @Column(name = "pin")
+    private Long pin;
     @Column(name = "last_updated")
     private Timestamp lastUpdated;
 

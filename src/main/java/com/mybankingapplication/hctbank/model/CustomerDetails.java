@@ -1,11 +1,13 @@
 package com.mybankingapplication.hctbank.model;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.sql.Timestamp;
+
 
 @Data
 @Entity public class CustomerDetails {

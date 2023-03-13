@@ -35,35 +35,32 @@ public class MyBankingApplicationController {
     @GetMapping("/wish")
     public String wish()
     {
-        return "heelloooo";
+        return "hello";
     }
-    @PostMapping("/create")
+    @PostMapping("/customers")
     public ResponseEntity<IResponse> saveCustomerDetails
             (@RequestBody CustomerDetailsRequestBody customerDetailsRequestBody)
     {
         IResponse iResponse= iMyBankService.saveCustomerDetails(customerDetailsRequestBody);
-        return new ResponseEntity<IResponse>( HttpStatus.CREATED);
+        return new ResponseEntity<IResponse>(iResponse,HttpStatus.CREATED);
     }
     @PostMapping("/password")
     public ResponseEntity<String> updatePassword
             (@RequestBody CredentialsRequestBody credentialsRequestBody)
     {
         String response=iMyBankService.createPassword(credentialsRequestBody);
-        return new ResponseEntity<String>((response != null ? response:new InvalidInputExceptions("Invalid Password",HttpStatus.BAD_REQUEST.value())).toString(),HttpStatus.CREATED);
+        return new ResponseEntity<String>((response != null ? response:new InvalidInputExceptions
+                ("Invalid Password",HttpStatus.BAD_REQUEST.value())).toString(),HttpStatus.CREATED);
     }
     @GetMapping("/customers")
     public Object getAllCustomers(@RequestParam(name = "customerId",required = false)Long customerId)
     {
         Object response=iMyBankService.getCustomerDetails(customerId);
-//        if(customerId==null)
-//        {
-//            return iMyBankService.getCustomerDetails();
-//        }else {
-//            return iMyBankService.getCustomerDetails(customerId);}
+
         return response;
     }
     @GetMapping("/balance")
-    public ResponseEntity<String> getAccountBalance(@RequestParam(name = "accountNo") long accountNo,Long customerId){
+    public ResponseEntity<String> getAccountBalance(@RequestParam(name = "accNo") long accountNo,Long customerId){
         Object accountBalance= iMyBankService.getAccountBalance(accountNo,customerId);
 
         return new ResponseEntity<String>(accountBalance!=null?"Account balance is: "
@@ -78,7 +75,8 @@ public class MyBankingApplicationController {
                 ("Invalid Details", HttpStatus.BAD_REQUEST.value())).toString(), HttpStatus.CREATED);
 
     }@GetMapping("/transactionsDetails")
-    public Object getAllDataByAccountNo(@RequestParam(name = "accountNo")Long accountNo,@RequestParam(name = "transactionId") Long transactionId)
+    public Object getAllDataByAccountNo(@RequestParam(name = "accountNo")Long accountNo,
+                                        @RequestParam(name = "transactionId") Long transactionId)
     {
         Object response=iMyBankService.getAllDataByAccountNo(accountNo,transactionId);
                 return response;

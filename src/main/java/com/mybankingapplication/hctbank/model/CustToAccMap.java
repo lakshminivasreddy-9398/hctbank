@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @NoArgsConstructor
 public class CustToAccMap {
     @Id
-    @Column(name = "accounti_d")
+    @Column(name = "account_id")
     private Long accountNo;
     @Column(name ="Customer_id" )
     private Long customerId;
