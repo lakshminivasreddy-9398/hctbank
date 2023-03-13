@@ -1,14 +1,11 @@
 package com.mybankingapplication.hctbank.service;
 
 import com.mybankingapplication.hctbank.model.CustToAccMap;
-import com.mybankingapplication.hctbank.model.CustomerDetails;
 import com.mybankingapplication.hctbank.model.request.*;
-import com.mybankingapplication.hctbank.model.responce.IResponse;
-
-import java.util.List;
+import com.mybankingapplication.hctbank.model.responce.CreatCustDataResopse;
 
 public interface IMyBankService {
-    IResponse saveCustomerDetails(CustomerDetailsRequestBody customerDetailsRequestBody);
+    CreatCustDataResopse saveCustomerDetails(CustomerDetailsRequestBody customerDetailsRequestBody);
     Long saveCustomerAddress(CustomerAddressRequestBody customerAddressRequestBody);
     Long updateAccountBalance(AccntBalReqBody accntBalReqBody);
     boolean CustIdToAccIdMap(CustToAccMap custToAccMap);
